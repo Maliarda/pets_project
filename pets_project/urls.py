@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import include, path, re_path
 
 from drf_yasg import openapi
@@ -15,6 +16,7 @@ router.register(r"pets", PetViewSet)
 router.register(r"users", UserViewSet)
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path("api/", include(router.urls)),
     path("api/auth/", include("djoser.urls")),
     path("api/auth/", include("djoser.urls.jwt")),

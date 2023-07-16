@@ -8,10 +8,10 @@
 ### Клонировать репозиторий и перейти в нем в папку infra в командной строке:
 
 ```
-git clone https://github.com/Maliarda/infra_sp2.git
+git clone https://github.com/Maliarda/pets_project.git
 ```
 ```
-cd infra_sp2/infra
+cd pets_project/infra
 ```
 ### Создать .env файл в директории infra, в котором должны содержаться следующие переменные:
 > DB_ENGINE=django.db.backends.postgresql - указываем, что работаем с postgresql
@@ -26,8 +26,9 @@ cd infra_sp2/infra
 
 > DB_PORT=5432 - порт для подключения к БД
 
-### Создать .env файл в директории api_yamdb для SECRET_KEY
-Для генерации нового значения можно использовать команду (из контейнера web, либо иного окружения с установленным python и Django)
+### Создать .env файл в директории pets_project для SECRET_KEY
+Для генерации нового значения можно использовать команду (из контейнера web, 
+либо иного окружения с установленным python и Django)
 
 ```
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
@@ -47,10 +48,7 @@ docker-compose exec web python manage.py migrate
 ```
 docker-compose exec web python manage.py collectstatic --no-input
 ```
-### Добавить данные в базу:
-```
-docker-compose run web python manage.py loaddata fixtures.json
-```
+
 ### Создать суперпользователя:
 ```
 docker-compose exec web python manage.py createsuperuser
